@@ -106,4 +106,3 @@ ai-order-assistant/
       hooks/useChat.ts    # Chat state management hook
       styles/index.css    # Tailwind v4 theme
 ```
-.
