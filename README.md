@@ -78,6 +78,7 @@ See [docs/](docs/) directory for detailed documentation:
 - [Setup Guide](docs/setup-guide.md) - Azure and LINE OA setup instructions
 - [API Reference](docs/api-reference.md) - Full API documentation
 - [Menu Data Format](docs/menu-data.md) - Menu JSON schema and addons
+- [Deployment](docs/deployment.md) - Deploy to Azure (Web App + Static Web Apps)
 
 ## Project Structure
 
