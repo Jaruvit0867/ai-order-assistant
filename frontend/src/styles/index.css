@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-cream-50: #FFFFFF;
+  --color-cream-100: #F8F7F6;
+  --color-cream-200: #EFECEA;
+  --color-cream-300: #E1DBD7;
+
+  --color-forest-50: #FFF4EE;
+  --color-forest-100: #FFE7D8;
+  --color-forest-200: #FFC6A8;
+  --color-forest-300: #FF9D66;
+  --color-forest-400: #FF6B24;
+  --color-forest-500: #FF5A14;
+  --color-forest-600: #E5480B;
+  --color-forest-700: #B9350A;
+  --color-forest-800: #2D2928;
+  --color-forest-900: #161311;
+
+  --color-warm-50: #FFF5ED;
+  --color-warm-100: #FFE9DA;
+  --color-warm-200: #FFCBAE;
+  --color-warm-300: #FFA06D;
+  --color-warm-400: #FF5A14;
+  --color-warm-500: #F24D0D;
+  --color-warm-600: #D73E07;
+  --color-warm-700: #A83208;
+
+  --color-sage: #7B7470;
+  --color-sage-light: #AAA3A0;
+  --color-ink: #252221;
+  --color-ash: #8B8582;
+
+  --color-spice-1: #65A30D;
+  --color-spice-2: #EAB308;
+  --color-spice-3: #F97316;
+  --color-spice-4: #EA580C;
+  --color-spice-5: #DC2626;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at 16px 16px, rgba(255, 90, 20, 0.07) 1px, transparent 1.5px),
+    #101010;
+  background-size: 18px 18px;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+/* Safe area padding for notched phones */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.phone-shell {
+  width: min(100%, 430px);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--color-cream-100);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+@media (min-width: 768px) {
+  .phone-shell {
+    min-height: min(920px, calc(100vh - 32px));
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 28px;
+    overflow: hidden;
+  }
+}
+
+.soft-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(45, 41, 40, 0.06);
+  box-shadow: 0 8px 24px rgba(45, 41, 40, 0.07);
+}
+
+.orange-glow {
+  box-shadow: 0 16px 28px rgba(255, 90, 20, 0.24);
+}
+
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Hide scrollbar for category tabs */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Typing indicator animation */
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.typing-dot {
+  animation: typing-dot 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* Chat popup slide-up */
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.slide-up {
+  animation: slide-up 0.25s ease-out;
+}
+
+/* Fade in for backdrop */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in {
+  animation: fade-in 0.15s ease-out;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .typing-dot, .slide-up, .fade-in {
+    animation: none;
+  }
+}

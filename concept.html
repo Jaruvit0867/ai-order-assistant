@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Street Food - Architecture Canvas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f8fafc;
+        }
+        .flow-arrow {
+            position: relative;
+        }
+        @media (min-width: 1024px) {
+            .flow-arrow::after {
+                content: '\f061';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                top: 50%;
+                right: -1.5rem;
+                transform: translateY(-50%);
+                color: #cbd5e1;
+                font-size: 1.5rem;
+                z-index: 10;
+            }
+            .flow-arrow:last-child::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 p-4 md:p-8">
+
+    <header class="max-w-6xl mx-auto text-center mb-12">
+        <div class="inline-block bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-sm font-semibold mb-4 border border-blue-200">
+            Hackathon Category: Tourism (Travel Tech & Zero-Hardware)
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+            AI Multilingual Order Assistant
+        </h1>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+            ระบบผู้ช่วยรับออเดอร์อัจฉริยะพหุภาษา ทลายข้อจำกัดด้านภาษาของร้านค้ารายย่อย 
+            ด้วยสถาปัตยกรรมที่ใช้เพียง "สมาร์ทโฟนและคิวอาร์โค้ด" ประมวลผลผ่าน Azure Cloud 100%
+        </p>
+    </header>
+
+    <section class="max-w-6xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-red-50 p-6 rounded-2xl border border-red-100 shadow-sm">
+            <h3 class="text-xl font-bold text-red-700 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation"></i> Pain Point
+            </h3>
+            <p class="text-slate-700 mb-2 font-medium">ร้านอาหารระดับชุมชนและสตรีทฟู้ด (Micro-SME) พลาดโอกาสทางเศรษฐกิจจากนักท่องเที่ยวชาวต่างชาติ เนื่องจากข้อจำกัดด้านภาษา</p>
+            <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 mt-3">
+                <li>ขาดเครื่องมือสื่อสารและอธิบายรายละเอียดอาหารที่ถูกต้องให้ชาวต่างชาติ</li>
+                <li>ต้นทุนระบบการจัดการร้านอาหาร (POS) หรือตู้ Kiosk มีราคาสูงเกินไป</li>
+                <li>นักท่องเที่ยวขาดความมั่นใจในการสั่งอาหารท้องถิ่น (กลัวแพ้อาหาร, สั่งผิด)</li>
+            </ul>
+        </div>
+        <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-sm">
+            <h3 class="text-xl font-bold text-emerald-700 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-lightbulb"></i> Our Solution
+            </h3>
+            <p class="text-slate-700 mb-2 font-medium">ระบบสื่อสารและรับออเดอร์สองทาง ที่ทำงานผ่านสมาร์ทโฟนของผู้ใช้งาน โดยไม่จำเป็นต้องติดตั้งอุปกรณ์เพิ่มเติมที่ร้านค้าเลย</p>
+             <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 mt-3">
+                <li>แปลและแสดงผลเมนูเป็นภาษาของนักท่องเที่ยวอัตโนมัติ (Auto-Translate)</li>
+                <li>AI Agent ให้ข้อมูลเชิงลึกเกี่ยวกับอาหาร (วัตถุดิบ, รสชาติ) ผ่านเสียงและข้อความ</li>
+                <li>แปลงคำสั่งซื้อเป็น "ภาษาไทย" ส่งตรงเข้ามือถือผู้ขายทันที</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto mb-16">
+        <h2 class="text-2xl font-bold mb-8 text-center text-slate-800 border-b pb-4">System Architecture & Workflow</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
+            
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 flow-arrow relative">
+                <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-lg flex items-center justify-center text-xl mb-4 border border-slate-200">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">1. User Interface (Tourist)</h3>
+                <p class="text-sm text-slate-500 mb-4">ใช้งานผ่านเว็บเบราว์เซอร์บนมือถือนักท่องเที่ยว</p>
+                
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-qrcode text-slate-400 mt-1"></i>
+                        <p class="text-sm"><strong>Scan & Access:</strong> สแกนคิวอาร์โค้ดหน้าร้านเพื่อเปิดเมนู โดยระบบจะแสดงผลเป็นภาษาแม่ของนักท่องเที่ยวโดยอัตโนมัติ</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-comments text-slate-400 mt-1"></i>
+                        <p class="text-sm"><strong>Interactive Q&A:</strong> พิมพ์หรือพูดถามรายละเอียดเมนูด้วยภาษาตัวเอง (เช่น มีเนื้อไหม? เผ็ดไหม?) ระบบจะตอบกลับเป็นทั้งข้อความและเสียงพูดอธิบาย</p>
+                    </div>
+                     <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-cart-plus text-slate-400 mt-1"></i>
+                        <p class="text-sm"><strong>Order Placement:</strong> กดยืนยันรายการอาหารที่ต้องการผ่านหน้าจอ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-900 text-white rounded-2xl p-6 shadow-lg border border-blue-800 flow-arrow relative z-10 transform lg:scale-105">
+                <div class="w-12 h-12 bg-blue-800 text-blue-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-blue-700 shadow-inner">
+                    <i class="fa-brands fa-microsoft"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">2. Processing (Azure AI)</h3>
+                <p class="text-sm text-blue-200 mb-4">ศูนย์กลางสมองกลประมวลผลบนคลาวด์</p>
+                
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 bg-blue-800/50 p-2 rounded-lg">
+                        <i class="fa-solid fa-microphone-lines text-blue-400 mt-1"></i>
+                        <div>
+                            <p class="text-sm font-semibold text-blue-100">Azure AI Speech</p>
+                            <p class="text-xs text-blue-200">ประมวลผลคำสั่งเสียง (Speech-to-Text) และสร้างเสียงตอบกลับให้นักท่องเที่ยวฟัง (Text-to-Speech)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 bg-blue-800/50 p-2 rounded-lg">
+                        <i class="fa-solid fa-brain text-purple-400 mt-1"></i>
+                        <div>
+                            <p class="text-sm font-semibold text-blue-100">Azure OpenAI</p>
+                            <p class="text-xs text-blue-200">ทำ RAG ดึงข้อมูลวัตถุดิบเพื่อตอบคำถาม Q&A และสกัดคีย์เวิร์ดรายการอาหารที่สั่ง (Keyword Extraction)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 bg-blue-800/50 p-2 rounded-lg">
+                        <i class="fa-solid fa-server text-green-400 mt-1"></i>
+                        <div>
+                            <p class="text-sm font-semibold text-blue-100">Azure Functions</p>
+                            <p class="text-xs text-blue-200">รันเซอร์วิสแบบ Serverless ส่งข้อมูลคำสั่งซื้อที่แปลเป็น "ภาษาไทย" ไปยังระบบแจ้งเตือน</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200">
+                <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-lg flex items-center justify-center text-xl mb-4 border border-slate-200">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">3. Merchant Notification</h3>
+                <p class="text-sm text-slate-500 mb-4">รับออเดอร์ผ่านมือถือเครื่องเดิมที่ร้าน</p>
+                
+                <div class="space-y-3">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 relative">
+                        <div class="flex justify-between items-center mb-2 border-b border-slate-200 pb-2">
+                            <span class="text-xs font-bold text-green-600"><i class="fa-brands fa-line mr-1"></i> LINE Notify</span>
+                            <span class="text-xs text-slate-400">Now</span>
+                        </div>
+                        <p class="text-sm font-bold text-slate-800 mb-1">🔔 ออเดอร์ใหม่ - โต๊ะ 3</p>
+                        <ul class="text-sm text-slate-600 list-disc list-inside mb-2">
+                            <li>ข้าวพะแนงหมู (1)</li>
+                            <li>ไข่ดาว (1)</li>
+                        </ul>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle text-emerald-500 mt-1"></i>
+                        <p class="text-xs text-slate-600 font-medium">ผู้ขายอ่านออเดอร์ภาษาไทย ตักอาหาร และเก็บเงินได้อย่างราบรื่น โดยไม่ต้องพูดภาษาอังกฤษสักคำ!</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+        <h2 class="text-2xl font-bold mb-6 text-slate-800 text-center">Business Viability (ความคุ้มค่าและโอกาสขยายผล)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="font-bold text-slate-800 mb-2 border-l-4 border-blue-500 pl-3">Zero Hardware Barrier</h4>
+                <p class="text-sm text-slate-600">ไม่ต้องลงทุนติดตั้งจอ POS หรืออุปกรณ์ฮาร์ดแวร์ใหม่ ใช้เพียงกระดาษ QR Code 1 แผ่น และสมาร์ทโฟนที่มีอยู่แล้ว ทำให้ร้านค้ารายย่อยตัดสินใจใช้งานได้ทันที (Low Barrier to Entry)</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-800 mb-2 border-l-4 border-blue-500 pl-3">High Cost-Efficiency</h4>
+                <p class="text-sm text-slate-600">สถาปัตยกรรม Serverless และโมเดลภาษาขนาดเล็ก (เช่น GPT-4o-mini) ทำให้ต้นทุนประมวลผลต่อบิลต่ำระดับไม่ถึง 1 บาท คุ้มค่าต่อการทำกำไรและต่อยอดเป็นระบบ Subscription รายเดือน</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-800 mb-2 border-l-4 border-blue-500 pl-3">Highly Scalable</h4>
+                <p class="text-sm text-slate-600">ระบบถูกออกแบบมาให้กลมกลืนกับ Workflow เดิมของร้านอาหารไทย สามารถสเกลขยายให้ครอบคลุมร้านสตรีทฟู้ดทั่วประเทศได้อย่างรวดเร็ว สร้างอิมแพคต่อระบบเศรษฐกิจการท่องเที่ยวฐานราก</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center text-slate-500 text-sm mt-12 pb-8">
+        Architecture Blueprint for Azure AI Hackathon Pitching
+    </footer>
+
+</body>
+</html>
