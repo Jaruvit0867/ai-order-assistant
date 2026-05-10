@@ -64,7 +64,7 @@ export default function App() {
 
     // Fire and forget — don't wait for backend
     submitOrder({
-      table: menuData.restaurant.table_number,
+      table: menuData!.restaurant.table_number,
       items: cart.map((ci) => ({
         name: ci.menuItem.name_th,
         qty: ci.qty,
